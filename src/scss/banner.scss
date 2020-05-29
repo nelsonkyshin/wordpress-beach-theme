@@ -1,0 +1,64 @@
+%basic-banner {
+  width: 100%;
+  min-height: 18vh;
+
+  @media (min-width: 768px) {
+    min-height: 22vh;
+  }
+}
+
+%overlay-banner {
+  position: absolute;
+  background-color: $transparent-white;
+}
+
+.banner {
+  @extend %basic-banner;
+  display: flex;
+  flex-direction: column;
+  color: white;
+
+  .blog-title {
+    font-size: 4em;
+    font-weight: bold;
+
+    @media (min-width: 768px) {
+      font-size: 6em;
+    }
+
+    a, a:hover {
+      color: inherit;
+      text-decoration: inherit;
+    }
+  }
+
+  .blog-description {
+    font-size: 1.5em;
+    margin-top: -20px;
+
+    @media (min-width: 768px) {
+      font-size: 2em;
+    }
+  }
+}
+
+.banner-solid {
+  @extend %basic-banner;
+  position: absolute;
+  top: 0;
+  background-color: $banner;
+}
+
+.banner-overlay-1 {
+  @extend %basic-banner;
+  @extend %overlay-banner;
+  top: 32px;
+  transform: skewY(2deg);
+}
+
+.banner-overlay-2 {
+  @extend %basic-banner;
+  @extend %overlay-banner;
+  top: 24px;
+  transform: skewY(-2.5deg);
+}

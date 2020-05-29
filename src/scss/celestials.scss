@@ -1,0 +1,65 @@
+$cwidth: 100px;
+$top-in: 50px;
+$top-out: $top-in + 200px;
+$edge-mobile: 50px;
+$edge-desktop: 300px;
+$opposite-ease: cubic-bezier(.12,1,.73,.99);
+
+.absolute-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.celestial-container {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+
+.celestial-entity {
+	position: absolute;
+	width: $cwidth;
+	height: $cwidth;
+	cursor: pointer;
+
+	@media (min-width: 789px) {
+		width: $cwidth * 1.5;
+		height: $cwidth * 1.5;
+	}
+
+	&#sun {
+		transition: right 1.5s $opposite-ease, top 1.5s $opposite-ease;
+		right: -2*$cwidth;
+		top: 1.5*$top-out;
+	}
+
+	&#moon {
+		transition: left 1s $opposite-ease, top 1s $opposite-ease;
+		left: $edge-mobile;
+		top: $top-in;
+
+		@media (min-width: 789px) {
+			top: $top-in;
+			left: $edge-desktop;
+		}
+	}
+}
+
+
+.clicked {
+	#sun {
+		right: $edge-mobile;
+		top: $top-in;
+		@media (min-width: 789px) {
+			right: $edge-desktop;
+		}
+	}
+
+	#moon {
+		top: $top-out;
+		left: -2*$cwidth;
+	}
+}

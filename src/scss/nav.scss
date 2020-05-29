@@ -1,0 +1,191 @@
+#links {
+  position: fixed;
+  top: 0;
+  background-color: transparent;
+  transition: background-color 1s ease;
+  z-index: 1;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    position: relative;
+    background-color: ghostwhite;
+    justify-content: center;
+    min-height: 60px;
+  }
+
+  #mobile-menu {
+    width: 100%;
+    display: none;
+    background-color: ghostwhite;
+  }
+
+  label[for="mobile-menu"]{
+    margin-bottom: 0;
+    align-self: flex-end;
+
+    &:before {
+      content: url("data:image/svg+xml; utf8, <svg height='32px' id='menu' style='enable-background:new 0 0 32 32;' version='1.1' viewBox='0 0 32 32' width='32px' xml:space='preserve' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z'/></svg>");
+      display: block;
+      width: 32px;
+      height: 32px;
+      margin: 15px;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  #mobile-menu:checked ~ #main-menu-container {
+    max-height: 300px;
+    opacity: 1;
+    transition: max-height .3s ease-in, opacity .3s ease-in;
+    background-color: lighten($dark-blue, 20%);
+  }
+
+  #main-menu-container {
+    font-size: 1.5em;
+    font-family: $sans-font;
+    position: absolute;
+    top: 0;
+    display: flex;
+    overflow: hidden;
+    max-height: 0px;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+
+    @media (min-width: 768px) {
+      width: 750px;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      overflow: visible;
+    }
+    @media (min-width: 992px) {
+      width: 970px;
+    }
+    @media (min-width: 1200px) {
+      width: 1170px;
+    }
+
+    @media (min-width: 768px) {
+      position: relative;
+      justify-content: flex-start;
+      max-height: 100%;
+      opacity: 1;
+    }
+
+    ul {
+      padding-top: 50px;
+      padding-inline-start: 0;
+      width: 100%;
+      margin-bottom: 0;
+      transition: margin-left 0.3s ease-in-out;
+
+      @media (min-width:768px) {
+        padding-top: 0;
+        display: flex;
+        flex-direction: row;
+        width: auto;
+      }
+
+      li {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        list-style: none;
+        width: 100%;
+        margin-left: 30px;
+        transition: transform .1s ease-in-out;
+
+        .cta {
+          background-color: $contrast;
+          color: $dark-blue;
+          padding: 8px;
+          border-radius: $cta-radius;
+        }
+
+        &:hover {
+          @media (min-width: 768px) {
+            transform: scale(1.1);
+          }
+        }
+
+        &:not(:first-child) {
+
+          &:before {
+            content: '';
+            display: block;
+            width: 130%;
+            height: 1px;
+            margin-left: -30px;
+            background-color: lightgray;
+            position: relative;
+            top: -10px;
+
+            @media (min-width: 768px) {
+              content: none;
+            }
+          }
+        }
+
+        @media (min-width: 768px) {
+          width: inherit;
+          padding-top: 0;
+          padding-bottom: 0;
+          padding-left: 0;
+
+          &:not(:first-child) {
+            margin-left: 2.5em;
+          }
+        }
+      }
+    }
+  }
+
+  &:before {
+    content: 'Nelson Yiap';
+    color: $dark-blue;
+    font-family: $stylish-font;
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    @media(min-width: 768px) {
+      content: none;
+    }
+  }
+
+  &.not-top {
+    position: fixed;
+    top: 0;
+    background-color: #dddc !important;
+
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  a {
+    color: $dark-blue;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+
+    &.active {
+      color: darken($dark-blue, 50%);
+      border-bottom: 1px solid $dark-blue;
+    }
+
+    &:hover {
+      color: darken($dark-blue, 30%);
+    }
+  }
+}

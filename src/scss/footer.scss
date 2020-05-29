@@ -1,0 +1,20 @@
+.cta-footer {
+  position: relative;
+  background-color: $dark-blue;
+  min-height: 400px;
+
+  #back-to-top {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: -40px;
+    border-radius: 100%;
+    background-color: $contrast;
+    cursor: pointer;
+
+    &:hover svg {
+      transform-origin: center bottom;
+      animation: squeeze .7s infinite;
+    }
+  }
+}

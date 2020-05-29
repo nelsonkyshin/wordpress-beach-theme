@@ -1,0 +1,172 @@
+@import './globals';
+@import './colors';
+@import './sidebar';
+@import './post-meta';
+@import './banner';
+@import './nav';
+@import './footer';
+
+.myh-100 {
+	min-height: 100vh;
+}
+
+p {
+	margin-bottom: 2em;
+	line-height: 1.8em;
+}
+
+.icon-container {
+	border: white 4px dashed;
+	border-radius: $cta-radius;
+	position: relative;
+
+	&:before {
+		content: 'Like & Follow';
+		position: absolute;
+		top: -22px;
+		font-size: 1.3em;
+		padding: 0 10px;
+		background-color: cadetblue;
+	}
+}
+
+.icon {
+	width: 100px;
+	height: 100px;
+	transition: all 0.5s ease;
+	fill: white;
+
+	&:hover {
+		animation: $cta-hover-animation;
+	}
+}
+
+body {
+	&.loaded .main {
+		opacity: 100;
+	}
+}
+
+.main {
+	opacity: 0;
+	scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, .banner {
+	font-family: $stylish-font;
+}
+
+.loaded > div.loading-screen {
+	opacity: 0;
+	z-index: -100;
+
+	p {
+		opacity: 0
+	}
+}
+
+.parallax-container {
+	perspective: 1px;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.parallax-effect {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	&.parallax-base {
+		transform: translateZ(0);
+	}
+
+	&.parallax-behind {
+		transform: translateZ(-1px) scale(2);
+	}
+}
+
+.loading-screen {
+	transition: all 1.5s ease-in-out;
+	z-index: 100;
+	position: absolute;
+	width: 100%;
+	background-color: $white;
+
+	p {
+		font-size: 1.2em;
+		transition: opacity 0.5s ease-in-out;
+	}
+}
+
+html, body {
+	font-family: $sans-font;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: cadetblue;
+	color: black;
+	transition: background-color 1.6s ease, opacity 1s ease;
+
+	@import './celestials';
+
+	.container {
+		z-index: 0;
+	}
+
+	.container-fluid {
+		padding: 0 !important;
+	}
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 2em;
+
+	@media (min-width: 768px) {
+		font-size: 4em;
+	}
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+#content {
+	flex-grow: 1;
+}
+
+.btn-default {
+	background-color: $contrast;
+
+	&:hover {
+		animation: $cta-hover-animation;
+	}
+
+	&:focus {
+		outline: 0;
+		box-shadow: none;
+	}
+}
+
+button.cta {
+	font-weight: bold;
+	padding: 15px;
+	color: $dark-blue;
+	min-width: 130px;
+}
+
+@keyframes shake {
+	12.5% { transform: rotate(-5deg)}
+	25% { transform: rotate(5deg) }
+	50% {transform: rotate(0deg)}
+}
+
+@keyframes squeeze {
+	12.5% { transform: scaleY(0.8) }
+	25% { transform: scaleY(1.2) }
+	50% { transform: scaleY(1) }
+}
